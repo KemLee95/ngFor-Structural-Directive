@@ -1,0 +1,47 @@
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+
+<ng-container *ngIf="users.length > 0">
+  <ul>
+    <li
+      [class.bottm--margin]="!last"
+      *ngFor="let user of users;let count as count; let first as first; let last as last ;let isEven as even; let isOdd as odd"
+    >
+      <span>{{user.name}}</span>
+      <br />
+      <span>Phone:{{user.phone}}</span>
+      <br />
+      <span>Email:{{user.email}}</span>
+      <br />
+      <span>I am {{isEven? 'even': 'odd'}} member</span>
+      <br />
+      <span *ngIf="first">
+        I am first member
+      </span>
+    </li>
+  </ul>
+  <ul>
+    <ng-template
+      ngFor
+      [ngForOf]="users"
+      let-user
+      let-first="first"
+      let-isOdd="odd"
+      let-isEven="even"
+    >
+      <span>{{user.name}}</span>
+      <br />
+      <span>Phone:{{user.phone}}</span>
+      <br />
+      <span>Email:{{user.email}}</span>
+      <br />
+      <span>I am {{isEven? 'even': 'odd'}} member</span>
+      <br />
+      <span *ngIf="first">
+        I am first member
+      </span>
+    </ng-template>
+  </ul>
+</ng-container>
